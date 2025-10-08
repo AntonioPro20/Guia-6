@@ -1,0 +1,47 @@
+<%= form_with(model: estudiante, local: true) do |f| %>
+  <% if estudiante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estudiante.errors.count, "error") %> impidieron guardar el estudiante:</h2>
+      <ul>
+      <% estudiante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombres %>
+    <%= f.text_field :nombres %>
+  </div>
+
+   <div class="field">
+    <%= f.label :apellidos %>
+    <%= f.text_field :apellidos %>
+  </div>
+
+   <div class="field">
+    <%= f.label :carrera %>
+    <%= f.text_field :carrera %>
+  </div>
+
+   <div class="field">
+    <%= f.label :carnet %>
+    <%= f.text_field :carnet %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :fecha_nacimiento %>
+    <%= f.date_select :fecha_nacimiento, start_year: Date.today.year - 70, end_year: Date.today.year, order: [:day, :month, :year] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :celular %>
+    <%= f.text_field :celular, placeholder: "Solo números" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
